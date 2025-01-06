@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
 #include <stdexcept>
 #include "World.h"
 
@@ -39,6 +40,9 @@ class Creature{
         }
         virtual int getInitiative (){
             return initiative_;
+        }
+        virtual int getInstanceNumber (){
+            return instanceNumber_;
         }
         virtual void setInitiative (int newInitiative){
             if(newInitiative<0){
