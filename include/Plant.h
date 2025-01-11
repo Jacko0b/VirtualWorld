@@ -2,7 +2,7 @@
 #include "Creature.h"
 class Plant : public Creature{
     public:
-    Plant(std::pair<int, int> position, World** world)
+    Plant(std::pair<int, int> position, Creature*** world)
         : Creature(position,world){
         initiative_ = 0; 
         strength_ = 0;

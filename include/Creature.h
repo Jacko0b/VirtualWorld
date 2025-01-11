@@ -3,23 +3,22 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
-#include "World.h"
-
+// #include "World.h"
+class World;
 class Creature{
-    protected: enum class CreatureName {
+    public: 
+    enum class CreatureName {
             Wilk,
             Owca,
             Lew,
             Zmija,
-            Sowa,
+            Nosorozec,
             Trawa,
             Ciern,
             Guarana
         };
 
-    public:
-
-        Creature(std::pair<int, int> position, World** world):world_(world) {
+        Creature(std::pair<int, int> position, Creature*** world):world_(world) {
             setPosition(position);
             instanceNumber_ = ++numberOfInstances_; 
         }
@@ -32,9 +31,13 @@ class Creature{
         //big 5 todo 
         virtual ~Creature() = default;
 
-        virtual std::string toString() const=0;
+        virtual std::string toString(){
+            return std::string("mynameis");
+        }
         //______________Getery i Setery__________________________
-        virtual CreatureName getName () const=0;
+        virtual CreatureName getName (){
+            return creatureName_;
+        }
         virtual int getStrength (){
             return strength_;
         }
@@ -43,6 +46,12 @@ class Creature{
         }
         virtual int getInstanceNumber (){
             return instanceNumber_;
+        }
+        virtual int getX (){
+            return position_.first;
+        }
+        virtual int getY (){
+            return position_.second;
         }
         virtual void setInitiative (int newInitiative){
             if(newInitiative<0){
@@ -72,7 +81,8 @@ class Creature{
         static int numberOfInstances_;
         int instanceNumber_;
         std::pair<int,int> position_;
-        World** world_ = nullptr;
+        CreatureName creatureName_;
+        Creature*** world_ = nullptr;
         
 };
 

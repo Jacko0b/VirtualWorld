@@ -1,16 +1,19 @@
 #pragma once
+#include <cstdlib>
 #include "Creature.h"
 class Animal : public Creature{
-    Animal(std::pair<int, int> position, World** world)
+    public:
+    Animal(std::pair<int, int> position, Creature*** world)
         : Creature(position,world){
     }
 
     void action() override;
     void colision(Creature &other) override;
-    void draw() override;
     
     virtual bool isOlder(Creature &other){
         return this->instanceNumber_<other.getInstanceNumber();
     }
 
+    private:
+    std::pair<int,int> newPosition();
 };
