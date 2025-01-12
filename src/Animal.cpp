@@ -1,5 +1,5 @@
 #include "Animal.h"
-
+#include "World.h"
 std::pair<int,int> Animal::newPosition(){
     int x = getX();
     int y = getY();
@@ -35,12 +35,23 @@ void Animal::action(){
         world_[getX()][getY()] = nullptr;
         setPosition(newPos);
         world_[newPos.first][newPos.second] = this;
-        std::cout<<"mojapozycja:"<<newPos.first<<", "<<newPos.second<<std::endl;
     }
     else{
         colision(*world_[newPos.first][newPos.second]);
     }
 }
 void Animal::colision(Creature &other){
-    std::cout<<"domyslna kolizja zwierzaka";
+    if(getName()==other.getName()){
+        //multiplying logic
+    }
+    else if(getStrength()>other.getStrength()){
+        
+    }
+    else if(getStrength()==other.getStrength()){
+
+    }
+    else if(getStrength()<other.getStrength()){
+
+    }
+
 }

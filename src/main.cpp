@@ -7,8 +7,8 @@
 int main() {    
     std::srand(std::time(nullptr));
     World* world = new World();
+    world->addCreature(new Sheep(std::make_pair(19,19),world->getMap())); 
     world->addCreature(new Wolf(std::make_pair(1,1),world->getMap())); 
-    //world->addCreature(new Sheep(std::make_pair(1,2),world->getMap())); 
     world->drawWorld();
     std::vector<Creature*> creatures;
     for(int i=0;i<50;i++){
@@ -17,7 +17,6 @@ int main() {
                 Creature* c = world->getMap()[x][y];
                 if (c != nullptr) {
                     creatures.push_back(c);
-                    std::cout<<"wykonuje akcje w pętli: tura:"<<i<<" pole x:"<<x<<" ,y:"<<y<<std::endl;
                 }
             }
         }
@@ -27,7 +26,7 @@ int main() {
         for (Creature* c : creatures) {
             c->action();
         }
-
+        creatures.clear();
         world->drawWorld();
         sleep(1);
     }

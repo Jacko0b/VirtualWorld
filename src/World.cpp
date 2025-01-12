@@ -38,7 +38,7 @@ bool World::compareCreatures(Creature* a, Creature* b) {
     }
 void World::drawWorld(){
     // Sekwencja ANSI: \033[2J - wyczyść ekran, \033[H - przenieś kursor na początek
-    std::cout << "\033[2J\033[H" << std::flush;
+    system("clear");
     std::cout << "=== Author: Jakub Sobota 200816 ===\n";
     std::cout << "=== WORLD MAP 20x20 tura:"<<turn_++<<"===\n";
     for(int x = 0; x < 20; x++) {
